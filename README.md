@@ -53,7 +53,9 @@ HF_TOKEN=tu_token_aquí
 
 
 2. Instala las dependencias:
+```bash
 pip install -r requirements.txt
 
 3. Ejecuta la app:
+```bash
 streamlit run streamlit_app.py
