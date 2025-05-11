@@ -1,19 +1,59 @@
-# 💬 Chatbot template
+# ⚖️ Chatbot sobre la Ley de Seguridad Social (Uruguay) – Ley 20.130
 
-A simple Streamlit app that shows how to build a chatbot using OpenAI's GPT-3.5.
+Este es un chatbot legal desarrollado con un modelo de lenguaje LLaMA (a través de Hugging Face) y un sistema RAG (Retrieval-Augmented Generation).  
+El modelo responde preguntas exclusivamente en base al texto completo de la **Ley 20.130 de Reforma de la Seguridad Social en Uruguay (2023)**.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
+---
 
-### How to run it on your own machine
+## 🤖 ¿Qué hace?
 
-1. Install the requirements
+- Permite hacer preguntas en lenguaje natural sobre la ley.
+- Recupera los artículos relevantes de forma semántica (utilizando vectorización con FAISS).
+- Genera respuestas claras y completas usando el modelo LLaMA.
+- Siempre indica si la información está o no en la ley, y recomienda consultar a un experto si la pregunta excede el alcance del modelo.
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+---
 
-2. Run the app
+## 🗃 Estructura del proyecto
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+| Archivo                 | Función principal                                        |
+|-------------------------|----------------------------------------------------------|
+| `backend.py`            | Lógica del modelo (carga de PDF, FAISS, LLaMA, RAG)      |
+| `streamlit_app.py`      | Interfaz de usuario con Streamlit (chatbot conversacional) |
+| `Ley_20130_2023.pdf`    | Fuente de datos legal (ley completa)                     |
+| `requirements.txt`      | Lista de dependencias del proyecto                       |
+| `.env`                  | Contiene el token privado de Hugging Face (no subir)     |
+| `.gitignore`            | Ignora archivos temporales y sensibles                   |
+
+---
+
+## ⚙️ Requisitos
+
+- Python 3.9 o superior.
+- Un token de Hugging Face con acceso al modelo LLaMA.
+- Los paquetes listados en `requirements.txt`.
+
+---
+
+## 🔐 Configuración
+
+Antes de ejecutar la app, asegúrate de tener un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+
+HF_TOKEN=tu_token_aquí
+
+
+---
+
+## 🚀 Cómo ejecutar la app
+
+1. Clona el repositorio o ábrelo en Codespaces:
+   ```bash
+   git clone https://github.com/tu-usuario/chatbot-seguridad-social.git
+   cd chatbot-seguridad-social
+
+
+2. Instala las dependencias:
+pip install -r requirements.txt
+
+3. Ejecuta la app:
+streamlit run streamlit_app.py
