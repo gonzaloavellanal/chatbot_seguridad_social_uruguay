@@ -3,6 +3,7 @@ pdfminer.six
 langchain
 langchain-community
 langchain-huggingface
+langchain_huggingface
 langchain>=0.2.0
 sentence-transformers
 transformers
