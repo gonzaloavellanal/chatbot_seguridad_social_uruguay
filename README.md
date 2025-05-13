@@ -48,9 +48,9 @@ HF_TOKEN=tu_token_aquí
 
 1. Clona el repositorio o ábrelo en Codespaces:
    ```bash
-   git clone https://github.com/tu-usuario/chatbot-seguridad-social.git
-   cd chatbot-seguridad-social
-
+   git clone https://github.com/gonzaloavellanal/chatbot_seguridad_social_uruguay
+   cd chatbot-seguridad-social-uruguay
+   ```
 
 2. Instala las dependencias:
 ```bash
