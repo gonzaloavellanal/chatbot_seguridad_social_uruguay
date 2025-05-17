@@ -33,6 +33,7 @@ Este chatbot legal utiliza tecnología de vanguardia para responder consultas so
 - **Modelos**: LLaMA (Hugging Face)
 - **Vectorización**: FAISS
 - **Procesamiento de PDF**: pdfminer.six
+- **Containerización**: Docker
 - **Gestión de Dependencias**: pip
 
 ## 🗃 Estructura del Proyecto
@@ -41,6 +42,7 @@ Este chatbot legal utiliza tecnología de vanguardia para responder consultas so
 chatbot_seguridad_social_uruguay/
 ├── backend.py           # Lógica del modelo y procesamiento
 ├── streamlit_app.py     # Interfaz de usuario
+├── Dockerfile          # Configuración para containerización
 ├── pdfs/               # Directorio de documentos legales
 │   └── Ley_20130_2023.pdf
 ├── requirements.txt    # Dependencias del proyecto
@@ -86,6 +88,58 @@ echo "HF_TOKEN=tu_token_aquí" > .env
 2. **Ejecutar la aplicación**
 ```bash
 streamlit run streamlit_app.py
+```
+## 🐳 Despliegue con Docker
+
+### Prerequisitos
+- Docker instalado en tu sistema
+- Token de Hugging Face válido
+- Archivos PDF en el directorio `pdfs/`
+
+### Construir la imagen
+```bash
+# Construir la imagen Docker
+docker build -t chatbot-seguridad-social .
+```
+
+### Ejecutar el contenedor
+```bash
+# Ejecutar el contenedor exponiendo el puerto 8501
+docker run -p 8501:8501 chatbot-seguridad-social
+```
+
+### Variables de entorno en Docker
+Puedes pasar variables de entorno al contenedor de dos formas:
+
+1. **Usando archivo .env:**
+```bash
+docker run -p 8501:8501 --env-file .env chatbot-seguridad-social
+```
+
+2. **Directamente en el comando:**
+```bash
+docker run -p 8501:8501 -e HF_TOKEN=tu_token_aquí chatbot-seguridad-social
+```
+
+### Desarrollo con Docker Compose
+También puedes usar Docker Compose para desarrollo:
+
+```yaml
+version: '3.8'
+services:
+  chatbot:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./pdfs:/app/pdfs
+    env_file:
+      - .env
+```
+
+Para ejecutar con Docker Compose:
+```bash
+docker-compose up
 ```
 
 ## ⚙️ Configuración Avanzada
