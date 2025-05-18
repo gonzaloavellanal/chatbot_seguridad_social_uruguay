@@ -12,3 +12,5 @@ faiss-cpu
 python-dotenv
 torch
 accelerate
+python-dotenv
+nest_asyncio
